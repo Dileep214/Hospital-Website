@@ -1,22 +1,49 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
+=======
+node_modules/
+.env
+dist/
+build/
+.vscode/
+.DS_Store
+*.log
+package-lock.json
+yarn.lock
+frontend/node_modules/
+backend/node_modules/
+frontend/dist/
+backend/dist/
+
+# Logs
+logs
+>>>>>>> d147cfac46f9dd48f4e00a04a67686403a22d4f0
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+<<<<<<< HEAD
 node_modules
 dist
+=======
+>>>>>>> d147cfac46f9dd48f4e00a04a67686403a22d4f0
 dist-ssr
 *.local
 
 # Editor directories and files
+<<<<<<< HEAD
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+=======
+!.vscode/extensions.json
+.idea
+>>>>>>> d147cfac46f9dd48f4e00a04a67686403a22d4f0
 *.suo
 *.ntvs*
 *.njsproj
