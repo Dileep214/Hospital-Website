@@ -1,0 +1,31 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@import "tailwindcss";
+
+
+@theme {
+  --color-primary: #4DA8DA;
+  --color-secondary: #7ED6A7;
+  --color-accent: #F29088;
+  --color-cream: #FDFEFE;
+  --color-navy: #1F2D3D;
+
+  --font-poppins: "Poppins", sans-serif;
+  --font-nunito: "Nunito", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+body {
+  @apply bg-cream text-navy font-inter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-poppins;
+}
