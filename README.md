@@ -1,16 +1,76 @@
-# React + Vite
+# Shankar Children's Hospital Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the official front-end repository for the **Shankar Children's Hospital** website. This is a modern, responsive, and highly interactive web application built to provide information about the hospital's services, doctors, and facilities, while also offering an intelligent AI assistant to help patients and parents navigate their medical needs.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application is built leveraging modern web development technologies:
 
-## React Compiler
+- **Frontend Framework**: [React 19](https://react.dev/) integrated with [Vite](https://vitejs.dev/) for blazing fast development and optimized production builds.
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) for a utility-first, fully responsive design system.
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) for buttery-smooth page transitions, hover effects, and widget animations.
+- **Icons**: [Lucide React](https://lucide.dev/) for clean, consistent, and scalable SVG icons.
+- **Typography**: Optimized loading for custom fonts (Poppins, Nunito, Inter) via `@fontsource`.
+- **AI Chatbot API**: Communicates with a custom [Node.js / Express](https://expressjs.com/) backend that uses Retrieval-Augmented Generation (RAG) and the [Groq API](https://groq.com/) for lightning-fast, highly accurate contextual responses.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Key Features & Sections
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The architecture is cleanly separated into reusable React components and layout sections:
+
+1. **Navigation & Footer** (`Navbar`, `Footer`): Persistent navigation and contact information.
+2. **Hero Section** (`Hero`): The main welcoming banner presenting the hospital's core message.
+3. **About Us** (`About`): Information about the children's hospital mission and legacy.
+4. **Services** (`Services`): Detailed lists of pediatric and specialized treatments.
+5. **Wellness Programs** (`Wellness`): Holistic and preventative care programs.
+6. **Our Doctors** (`Doctors`): Profiles of top pediatric specialists.
+7. **Emergency** (`Emergency`): Critical contact and immediate action protocols.
+8. **FAQ & Trust Indicators** (`FAQ`, `Trust`): Common queries and reassuring statistics/testimonials.
+9. **Floating AI Assistant Widget** (`ChatWidget`): 
+   - A modern support widget mounted globally on all pages.
+   - Allows users to ask questions specifically regarding hospital policies, timings, and services.
+   - Automatically detects intents to book appointments and smoothly redirects users to the official Shankar Children's Hospital mobile app on the Google Play Store.
+
+---
+
+## 🛠️ Getting Started
+
+Follow these steps to set up and run the project locally.
+
+### Prerequisites
+
+Ensure you have **Node.js** (v18+ recommended) and `npm` installed on your machine.
+
+### Installation & Run
+
+1. **Clone the repository** (if you haven't already):
+   ```bash
+   git clone https://github.com/Dileep214/Hospital-Website.git
+   cd Hospital-Website
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **View in browser**: Ensure the terminal outputs the local URL (usually `http://localhost:5173/`) and open it in your browser.
+
+---
+
+## 🤖 The Chatbot Integration
+
+The website features a live chat interface built natively into the React app. Instead of a bulky iframe, it uses pure React state and Framer Motion for a seamless experience.
+
+- **API Endpoint**: `https://chatbot-helper-1.onrender.com/api/chat`
+- **Logic**: The widget sends the user's input to the backend, parses the AI response, formats it into a chat bubble, and handles direct actions (like App Store redirects triggered by the `shouldRedirect` flag from the Node.js controller).
+
+## 📄 License & Ownership
+
+Created for Shankar Children's Hospital. All rights reserved.
