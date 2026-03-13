@@ -9,6 +9,7 @@ import FAQ from './sections/FAQ';
 import Emergency from './sections/Emergency';
 import Trust from './sections/Trust';
 import Footer from './components/Footer';
+import ChatWidget from './components/ChatWidget';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       </main>
 
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
