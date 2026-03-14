@@ -46,7 +46,7 @@ const Navbar = () => {
                         </a>
                     ))}
                     <motion.a
-                        href="tel:+1234567890"
+                        href="#emergency"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center gap-2 bg-accent text-white px-5 py-2 rounded-full font-semibold shadow-md"
@@ -85,8 +85,12 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
-                            <a href="tel:+1234567890" className="bg-accent text-white py-3 rounded-xl font-bold mt-2">
-                                Emergency Call
+                            <a 
+                                href="#emergency" 
+                                onClick={() => setIsOpen(false)}
+                                className="bg-accent text-white py-3 rounded-xl font-bold mt-2"
+                            >
+                                Emergency
                             </a>
                         </div>
                     </motion.div>

@@ -20,12 +20,22 @@ const Footer = () => {
                             Providing compassionate, professional, and world-class pediatric and neonatal care for the children of Tuni and beyond.
                         </p>
                         <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+                            <a 
+                                href="https://www.instagram.com/shankar_childrens_hospital?igsh=eXFybjl3aGZ1anFk"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"
+                            >
                                 <Instagram size={18} />
-                            </div>
-                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+                            </a>
+                            <a 
+                                href="https://www.facebook.com/share/1NCuv8mmfV/?mibextid=wwXIfr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"
+                            >
                                 <Facebook size={18} />
-                            </div>
+                            </a>
                         </div>
                     </div>
 
@@ -62,7 +72,7 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center gap-4">
                                 <Phone className="text-primary shrink-0" size={20} />
-                                <span className="text-white/60">+91 94916 49111</span>
+                                <a href="tel:+919491649111" className="text-white/60 hover:text-primary transition-colors">+91 94916 49111</a>
                             </li>
                             <li className="flex items-center gap-4">
                                 <Mail className="text-primary shrink-0" size={20} />

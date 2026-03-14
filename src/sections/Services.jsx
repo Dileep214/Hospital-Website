@@ -2,46 +2,51 @@ import React from 'react';
 import SectionWrapper from '../components/SectionWrapper';
 import { motion } from 'framer-motion';
 import Card from '../components/Card';
-import { Baby, Zap, Activity, Brain, Eye, Headphones, Shield } from 'lucide-react';
+import { Baby, Activity, ShieldCheck, Heart, Star, Sparkles, ClipboardList } from 'lucide-react';
 
 const Services = () => {
     const services = [
         {
-            title: "Neonatology",
-            icon: <Baby size={40} className="text-primary" />,
-            desc: "Advanced specialized newborn care including NICU facilities.",
-            color: "bg-primary/5"
-        },
-        {
-            title: "Pediatric Care",
-            icon: <Zap size={40} className="text-accent" />,
-            desc: "General pediatric consultations for children of all ages.",
-            color: "bg-accent/5"
-        },
-        {
-            title: "24/7 Emergency",
-            icon: <Shield size={40} className="text-secondary" />,
-            desc: "Round-the-clock emergency services for urgent childhood medical needs.",
-            color: "bg-secondary/5",
-            id: "shield-icon"
-        },
-        {
-            title: "Immunizations",
+            title: "Pediatric Consultation",
             icon: <Activity size={40} className="text-primary" />,
-            desc: "Routine vaccinations in a gentle, stress-free setting.",
-            color: "bg-primary/5"
+            desc: "Expert diagnosis and treatment for all childhood illnesses and regular health check-ups.",
+            color: "bg-primary/5",
+            points: ["Expert diagnosis", "Regular check-ups"]
         },
         {
-            title: "NICU Unit",
-            icon: <Brain size={40} className="text-accent" />,
-            desc: "Newborn Intensive Care Unit for specialized medical support.",
-            color: "bg-accent/5"
+            title: "Newborn & Infant Care",
+            icon: <Baby size={40} className="text-accent" />,
+            desc: "Specialized care for newborns, including growth monitoring and nutrition guidance.",
+            color: "bg-accent/5",
+            points: ["Newborn check-ups", "Feeding guidance"]
         },
         {
-            title: "Child Health Checkups",
-            icon: <Eye size={40} className="text-secondary" />,
-            desc: "Regular screening and developmental monitoring for children.",
-            color: "bg-secondary/5"
+            title: "Vaccination (Immunization)",
+            icon: <ShieldCheck size={40} className="text-secondary" />,
+            desc: "All routine childhood vaccines to protect against measles, polio, and more.",
+            color: "bg-secondary/5",
+            points: ["Routine vaccines", "Disease protection"]
+        },
+        {
+            title: "Childhood Illnesses",
+            icon: <Heart size={40} className="text-primary" />,
+            desc: "Treatment for viral fever, cold, cough, infections, and allergies.",
+            color: "bg-primary/5",
+            points: ["Viral fever care", "Infection treatment"]
+        },
+        {
+            title: "Emergency Child Care",
+            icon: <Activity size={40} className="text-accent" />,
+            desc: "24-hour emergency services for sudden fever, breathing problems, or injuries.",
+            color: "bg-accent/5",
+            points: ["24/7 Emergency", "Critical care"]
+        },
+        {
+            title: "Developmental Monitoring",
+            icon: <Sparkles size={40} className="text-secondary" />,
+            desc: "Growth tracking and developmental screening for healthy child progress.",
+            color: "bg-secondary/5",
+            points: ["Growth tracking", "Screening advice"]
         }
     ];
 
@@ -80,6 +85,13 @@ const Services = () => {
                             <p className="text-navy/70 leading-relaxed mb-6">
                                 {s.desc}
                             </p>
+                            <div className="flex flex-wrap gap-2 mb-6">
+                                {s.points.map((p, pi) => (
+                                    <span key={pi} className="text-[10px] font-bold uppercase tracking-wider bg-gray-50 text-navy/40 px-2 py-1 rounded-md border border-gray-100">
+                                        {p}
+                                    </span>
+                                ))}
+                            </div>
                             <button className="text-primary font-bold group flex items-center gap-2 hover:gap-3 transition-all">
                                 Learn More
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>

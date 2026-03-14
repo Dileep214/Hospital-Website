@@ -6,7 +6,45 @@ import heroImg from '../assets/hero-main.png';
 
 const Hero = () => {
     const [showReviews, setShowReviews] = useState(false);
+    const [showServices, setShowServices] = useState(false);
 
+    const mainServices = [
+        {
+            title: "Pediatric Consultation",
+            icon: <Activity className="text-primary" />,
+            points: ["Child specialist doctor consultation", "Diagnosis and treatment for children's illnesses", "Regular health check-ups for babies and kids"]
+        },
+        {
+            title: "Newborn & Infant Care",
+            icon: <Heart className="text-secondary" />,
+            points: ["Newborn baby check-ups", "Growth and development monitoring", "Feeding and nutrition guidance"]
+        },
+        {
+            title: "Vaccination (Immunization)",
+            icon: <ShieldCheck className="text-primary" />,
+            points: ["All routine childhood vaccines", "Protection against diseases like measles, polio, etc."]
+        },
+        {
+            title: "Childhood Illness Treatment",
+            icon: <Activity className="text-accent" />,
+            points: ["Viral fever, Cold and cough", "Infections and allergies", "Stomach problems in children"]
+        },
+        {
+            title: "Emergency Child Care",
+            icon: <Activity className="text-secondary" />,
+            points: ["24-hour pediatric emergency services", "Treatment for sudden fever, breathing problems, or injuries"]
+        },
+        {
+            title: "Pediatric Monitoring",
+            icon: <Activity className="text-primary" />,
+            points: ["Growth tracking", "Developmental screening for children", "Advice for healthy child development"]
+        },
+        {
+            title: "Parent Guidance",
+            icon: <Star className="text-accent" />,
+            points: ["Nutrition and diet advice", "Child health counseling for parents"]
+        }
+    ];
     return (
         <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[radial-gradient(circle_at_top_right,_var(--color-primary-10),_transparent_50%),radial-gradient(circle_at_bottom_left,_var(--color-secondary-10),_transparent_50%)] bg-cream">
             {/* Background Decorative Elements */}
@@ -78,7 +116,11 @@ const Hero = () => {
                             >
                                 Book Appointment
                             </Button>
-                            <Button variant="secondary" className="text-lg px-10 py-4 flex items-center justify-center gap-2">
+                            <Button 
+                                variant="secondary" 
+                                className="text-lg px-10 py-4 flex items-center justify-center gap-2"
+                                onClick={() => setShowServices(true)}
+                            >
                                 <Activity className="w-5 h-5" />
                                 Our Services
                             </Button>
@@ -117,105 +159,197 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        {/* Reviews Popup */}
+                        {/* Reviews Overlay */}
                         <AnimatePresence>
                             {showReviews && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                    exit={{ opacity: 0, y: 20, scale: 0.95 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="absolute left-0 right-0 mt-4 z-50 bg-white rounded-3xl shadow-2xl border border-navy/10 p-6 max-h-[400px] overflow-y-auto"
-                                    onClick={(e) => e.stopPropagation()}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
                                 >
-                                    <div className="flex justify-between items-center mb-6">
-                                        <h3 className="text-xl font-bold text-navy flex items-center gap-2">
-                                            <Star className="w-5 h-5 fill-accent text-accent" /> Patient Reviews
-                                        </h3>
-                                        <button 
-                                            onClick={(e) => { e.stopPropagation(); setShowReviews(false); }}
-                                            className="p-1.5 hover:bg-gray-100 rounded-full transition-colors"
-                                        >
-                                            <svg className="w-5 h-5 text-navy/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                                        </button>
-                                    </div>
-
-                                    <div className="space-y-6">
-                                        {/* Review 1 */}
-                                        <div className="pb-6 border-b border-navy/5">
-                                            <div className="flex items-center justify-between mb-2">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="flex text-accent">
-                                                        {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
-                                                    </div>
-                                                    <span className="font-bold text-navy text-sm">RAJU</span>
+                                    <motion.div 
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="absolute inset-0 bg-navy/60 backdrop-blur-xl"
+                                        onClick={() => setShowReviews(false)}
+                                    />
+                                    
+                                    <motion.div
+                                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                                        className="relative bg-white w-full max-w-4xl max-h-[85vh] rounded-[40px] shadow-2xl overflow-hidden flex flex-col"
+                                    >
+                                        <div className="p-8 md:p-10 border-b border-gray-100 flex justify-between items-center bg-accent/5">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center text-accent">
+                                                    <Star className="w-6 h-6 fill-current" />
                                                 </div>
-                                                <span className="text-xs text-navy/40 flex items-center gap-1">
-                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                                                    07 Oct 2024
-                                                </span>
+                                                <div>
+                                                    <h2 className="text-2xl md:text-3xl font-black text-navy">Patient Reviews</h2>
+                                                    <p className="text-navy/60 font-medium text-sm">Real experiences from our parents</p>
+                                                </div>
                                             </div>
-                                            <p className="text-sm text-navy/70 italic mb-3">
-                                                "Very good experience at Shankar Children's Hospital. Waiting time was very short and the staff responded quickly. The doctor treated my child with great care."
-                                            </p>
-                                            <div className="flex flex-wrap gap-2">
-                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">
-                                                    👍 Short wait
-                                                </span>
+                                            <button 
+                                                onClick={() => setShowReviews(false)}
+                                                className="p-3 bg-white hover:bg-gray-100 rounded-2xl shadow-lg border border-gray-100 transition-all text-navy/40 hover:text-navy"
+                                            >
+                                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <div className="p-8 md:p-10 overflow-y-auto custom-scrollbar">
+                                            <div className="grid grid-cols-1 gap-6 md:gap-8">
+                                                {[
+                                                    {
+                                                        name: "RAJU",
+                                                        date: "07 Oct 2024",
+                                                        text: "Very good experience at Shankar Children's Hospital. Waiting time was very short and the staff responded quickly. The doctor treated my child with great care.",
+                                                        tags: ["Short wait"]
+                                                    },
+                                                    {
+                                                        name: "Vasudha",
+                                                        date: "03 May 2024",
+                                                        text: "Excellent pediatric care. The doctor explained everything clearly and the hospital maintains very clean and sterilised equipment. Staff are very gentle with children.",
+                                                        tags: ["Professional counselling", "Sterilised equipment", "Quick service", "Gentle care"]
+                                                    },
+                                                    {
+                                                        name: "Amar Teja",
+                                                        date: "12 Aug 2024",
+                                                        text: "Shankar hospital is very clean and the behavior with patients is very good. Dr. Shankar sir is a very good human being first and then a great doctor. Overall very satisfied.",
+                                                        tags: ["Clean hospital", "Good behaviour", "Great doctor"]
+                                                    }
+                                                ].map((rev, idx) => (
+                                                    <motion.div
+                                                        key={idx}
+                                                        initial={{ opacity: 0, x: -20 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: idx * 0.1 }}
+                                                        className="bg-cream/20 p-8 rounded-3xl border border-accent/5 hover:border-accent/20 transition-all"
+                                                    >
+                                                        <div className="flex justify-between items-start mb-4">
+                                                            <div>
+                                                                <h4 className="font-bold text-navy text-lg">{rev.name}</h4>
+                                                                <p className="text-xs text-navy/40 flex items-center gap-1 mt-1">
+                                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                                                    {rev.date}
+                                                                </p>
+                                                            </div>
+                                                            <div className="flex text-accent">
+                                                                {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-current" />)}
+                                                            </div>
+                                                        </div>
+                                                        <p className="text-navy/70 italic leading-relaxed mb-4 text-base">
+                                                            "{rev.text}"
+                                                        </p>
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {rev.tags.map((tag, tIdx) => (
+                                                                <span key={tIdx} className="inline-flex items-center gap-1 text-[11px] font-bold bg-green-50 text-green-700 px-3 py-1.5 rounded-lg border border-green-100/50">
+                                                                    👍 {tag}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </motion.div>
+                                                ))}
                                             </div>
                                         </div>
 
-                                        {/* Review 2 */}
-                                        <div className="pb-6 border-b border-navy/5">
-                                            <div className="flex items-center justify-between mb-2">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="flex text-accent">
-                                                        {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
-                                                    </div>
-                                                    <span className="font-bold text-navy text-sm">Vasudha</span>
-                                                </div>
-                                                <span className="text-xs text-navy/40 flex items-center gap-1">
-                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                                                    03 May 2024
-                                                </span>
-                                            </div>
-                                            <p className="text-sm text-navy/70 italic mb-3">
-                                                "Excellent pediatric care. The doctor explained everything clearly and the hospital maintains very clean and sterilised equipment. Staff are very gentle with children."
-                                            </p>
-                                            <div className="flex flex-wrap gap-2">
-                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Professional counselling</span>
-                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Sterilised equipment</span>
-                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Quick service</span>
-                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Gentle care</span>
-                                            </div>
+                                        <div className="p-8 border-t border-gray-100 bg-gray-50/50 flex flex-col md:flex-row justify-center gap-4">
+                                            <Button 
+                                                onClick={() => window.open('https://www.justdial.com/Tuni/Shankar-Childrens-Hospital-About-Adb-Bank-Tuni-Main-Road/9999P8854-8854-211129175752-K2V7_BZDET', '_blank')}
+                                                className="px-8 py-4 bg-[#0076D7] hover:bg-[#005fa3] text-white border-none shadow-lg"
+                                            >
+                                                View More Reviews on Justdial
+                                            </Button>
+                                            <Button variant="accent" onClick={() => setShowReviews(false)} className="px-12 py-4">
+                                                Close Reviews
+                                            </Button>
                                         </div>
-
-                                        {/* Review 3 */}
-                                        <div>
-                                            <div className="flex items-center justify-between mb-2">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="flex text-accent">
-                                                        <Star className="w-3.5 h-3.5 fill-current" />
-                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
-                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
-                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
-                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
-                                                    </div>
-                                                    <span className="font-bold text-navy text-sm">Amar Teja</span>
-                                                </div>
-                                                <span className="text-xs text-navy/40 flex items-center gap-1">
-                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                                                    12 Aug 2024
-                                                </span>
-                                            </div>
-                                            <p className="text-sm text-navy/70 italic">
-                                                "Hospital management should improve communication with patients. Waiting area and support services could be better."
-                                            </p>
-                                        </div>
-                                    </div>
+                                    </motion.div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
+
+
+                        {/* Services Overlay */}
+                        <AnimatePresence>
+                            {showServices && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+                                >
+                                    <motion.div 
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="absolute inset-0 bg-navy/60 backdrop-blur-xl"
+                                        onClick={() => setShowServices(false)}
+                                    />
+                                    
+                                    <motion.div
+                                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                                        className="relative bg-white w-full max-w-6xl max-h-[90vh] rounded-[40px] shadow-2xl overflow-hidden flex flex-col"
+                                    >
+                                        <div className="p-8 md:p-12 border-b border-gray-100 flex justify-between items-center bg-cream/30">
+                                            <div>
+                                                <h2 className="text-3xl md:text-4xl font-black text-navy">Our Main Services</h2>
+                                                <p className="text-navy/60 font-medium mt-2">Comprehensive health care for your little ones</p>
+                                            </div>
+                                            <button 
+                                                onClick={() => setShowServices(false)}
+                                                className="p-3 bg-white hover:bg-gray-100 rounded-2xl shadow-lg border border-gray-100 transition-all text-navy/40 hover:text-navy"
+                                            >
+                                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <div className="p-8 md:p-12 overflow-y-auto custom-scrollbar">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                                                {mainServices.map((service, idx) => (
+                                                    <motion.div
+                                                        key={idx}
+                                                        initial={{ opacity: 0, y: 20 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        transition={{ delay: idx * 0.1 }}
+                                                        className="bg-cream/20 p-8 rounded-3xl border border-primary/5 hover:border-primary/20 hover:shadow-xl transition-all group"
+                                                    >
+                                                        <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
+                                                            {React.cloneElement(service.icon, { size: 28 })}
+                                                        </div>
+                                                        <h3 className="text-xl font-bold text-navy mb-4">{service.title}</h3>
+                                                        <ul className="space-y-3">
+                                                            {service.points.map((point, pIdx) => (
+                                                                <li key={pIdx} className="flex items-start gap-3 text-sm text-navy/70 leading-snug">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                                                    {point}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </motion.div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="p-8 border-t border-gray-100 bg-gray-50/50 flex justify-center">
+                                            <Button variant="primary" onClick={() => setShowServices(false)} className="px-12 py-4">
+                                                Close Services
+                                            </Button>
+                                        </div>
+                                    </motion.div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
                     </motion.div>
 
                     {/* Right Image Side */}
