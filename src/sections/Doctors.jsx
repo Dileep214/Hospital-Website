@@ -9,7 +9,7 @@ const Doctors = () => {
             name: "Dr. Shankar",
             specialty: "Senior Pediatrician & Neonatologist",
             education: "Highly Recommended Physician",
-            image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop",
+            image: "public/ChatGPT Image Mar 3, 2026, 11_55_47 AM.png",
             color: "bg-primary/10"
         }
     ];

@@ -1,10 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Star, ShieldCheck, Activity } from 'lucide-react';
 import Button from '../components/Button';
 import heroImg from '../assets/hero-main.png';
 
 const Hero = () => {
+    const [showReviews, setShowReviews] = useState(false);
+
     return (
         <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[radial-gradient(circle_at_top_right,_var(--color-primary-10),_transparent_50%),radial-gradient(circle_at_bottom_left,_var(--color-secondary-10),_transparent_50%)] bg-cream">
             {/* Background Decorative Elements */}
@@ -69,7 +71,11 @@ const Hero = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-14">
-                            <Button variant="primary" className="text-lg px-10 py-4 shadow-xl shadow-primary/20 hover:shadow-primary/40">
+                            <Button 
+                                variant="primary" 
+                                className="text-lg px-10 py-4 shadow-xl shadow-primary/20 hover:shadow-primary/40"
+                                onClick={() => window.open("https://play.google.com/store/apps/details?id=com.docterz.connect.shankarchildrenshospital&hl=en_IN", "_blank")}
+                            >
                                 Book Appointment
                             </Button>
                             <Button variant="secondary" className="text-lg px-10 py-4 flex items-center justify-center gap-2">
@@ -79,7 +85,11 @@ const Hero = () => {
                         </div>
 
                         {/* Social Proof */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 pt-8 border-t border-navy/5">
+                        <div 
+                            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 pt-8 border-t border-navy/5 cursor-pointer relative group"
+                            onClick={() => setShowReviews(!showReviews)}
+                        >
+                            <div className="absolute inset-x-0 -inset-y-2 bg-black/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                             <div className="flex -space-x-4">
                                 {[1, 2, 3, 4].map((i) => (
                                     <motion.div
@@ -106,6 +116,106 @@ const Hero = () => {
                                 </p>
                             </div>
                         </div>
+
+                        {/* Reviews Popup */}
+                        <AnimatePresence>
+                            {showReviews && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute left-0 right-0 mt-4 z-50 bg-white rounded-3xl shadow-2xl border border-navy/10 p-6 max-h-[400px] overflow-y-auto"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <div className="flex justify-between items-center mb-6">
+                                        <h3 className="text-xl font-bold text-navy flex items-center gap-2">
+                                            <Star className="w-5 h-5 fill-accent text-accent" /> Patient Reviews
+                                        </h3>
+                                        <button 
+                                            onClick={(e) => { e.stopPropagation(); setShowReviews(false); }}
+                                            className="p-1.5 hover:bg-gray-100 rounded-full transition-colors"
+                                        >
+                                            <svg className="w-5 h-5 text-navy/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                        </button>
+                                    </div>
+
+                                    <div className="space-y-6">
+                                        {/* Review 1 */}
+                                        <div className="pb-6 border-b border-navy/5">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="flex text-accent">
+                                                        {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
+                                                    </div>
+                                                    <span className="font-bold text-navy text-sm">RAJU</span>
+                                                </div>
+                                                <span className="text-xs text-navy/40 flex items-center gap-1">
+                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                                    07 Oct 2024
+                                                </span>
+                                            </div>
+                                            <p className="text-sm text-navy/70 italic mb-3">
+                                                "Very good experience at Shankar Children's Hospital. Waiting time was very short and the staff responded quickly. The doctor treated my child with great care."
+                                            </p>
+                                            <div className="flex flex-wrap gap-2">
+                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">
+                                                    👍 Short wait
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Review 2 */}
+                                        <div className="pb-6 border-b border-navy/5">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="flex text-accent">
+                                                        {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
+                                                    </div>
+                                                    <span className="font-bold text-navy text-sm">Vasudha</span>
+                                                </div>
+                                                <span className="text-xs text-navy/40 flex items-center gap-1">
+                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                                    03 May 2024
+                                                </span>
+                                            </div>
+                                            <p className="text-sm text-navy/70 italic mb-3">
+                                                "Excellent pediatric care. The doctor explained everything clearly and the hospital maintains very clean and sterilised equipment. Staff are very gentle with children."
+                                            </p>
+                                            <div className="flex flex-wrap gap-2">
+                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Professional counselling</span>
+                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Sterilised equipment</span>
+                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Quick service</span>
+                                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-green-50 text-green-700 px-2 py-1 rounded-md">👍 Gentle care</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Review 3 */}
+                                        <div>
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="flex text-accent">
+                                                        <Star className="w-3.5 h-3.5 fill-current" />
+                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
+                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
+                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
+                                                        <Star className="w-3.5 h-3.5 text-gray-300" />
+                                                    </div>
+                                                    <span className="font-bold text-navy text-sm">Amar Teja</span>
+                                                </div>
+                                                <span className="text-xs text-navy/40 flex items-center gap-1">
+                                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                                    12 Aug 2024
+                                                </span>
+                                            </div>
+                                            <p className="text-sm text-navy/70 italic">
+                                                "Hospital management should improve communication with patients. Waiting area and support services could be better."
+                                            </p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </motion.div>
 
                     {/* Right Image Side */}
