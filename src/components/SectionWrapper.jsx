@@ -5,7 +5,8 @@ const SectionWrapper = ({
     children,
     id,
     className = '',
-    bg = 'transparent'
+    bg = 'transparent',
+    fullWidth = false
 }) => {
     return (
         <section
@@ -17,7 +18,7 @@ const SectionWrapper = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="max-w-7xl mx-auto"
+                className={fullWidth ? "w-full" : "max-w-7xl mx-auto"}
             >
                 {children}
             </motion.div>
