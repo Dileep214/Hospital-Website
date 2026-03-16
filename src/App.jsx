@@ -12,6 +12,7 @@ import ChatWidget from './components/ChatWidget';
 import Contact from './sections/Contact';
 import WhatsAppButton from './components/WhatsAppButton';
 import InstagramShowcase from './sections/InstagramShowcase';
+import TopHero from './sections/TopHero';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
 
       <main>
+        <TopHero />
         <Hero />
         <About />
         <Services />

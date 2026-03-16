@@ -88,17 +88,17 @@ const InstagramShowcase = () => {
     const reels = [
         {
             id: 1,
-            video: "/WhatsApp Video 2026-03-16 at 7.22.53 PM.mp4",
+            video: "WhatsApp Video 2026-03-16 at 7.22.53 PM.mp4",
             title: "Our Pediatric Excellence"
         },
         {
             id: 2,
-            video: "/WhatsApp Video 2026-03-16 at 7.25.02 PM.mp4",
+            video: "WhatsApp Video 2026-03-16 at 7.25.02 PM.mp4",
             title: "Expert Newborn Care"
         },
         {
             id: 3,
-            video: "/WhatsApp Video 2026-03-16 at 7.26.21 PM.mp4",
+            video: "WhatsApp Video 2026-03-16 at 7.26.21 PM.mp4",
             title: "Patient Success Stories"
         }
     ];

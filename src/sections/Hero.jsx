@@ -109,15 +109,15 @@ const Hero = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-14">
-                            <Button 
-                                variant="primary" 
+                            <Button
+                                variant="primary"
                                 className="text-lg px-10 py-4 shadow-xl shadow-primary/20 hover:shadow-primary/40"
                                 onClick={() => window.open("https://play.google.com/store/apps/details?id=com.docterz.connect.shankarchildrenshospital&hl=en_IN", "_blank")}
                             >
                                 Book Appointment
                             </Button>
-                            <Button 
-                                variant="secondary" 
+                            <Button
+                                variant="secondary"
                                 className="text-lg px-10 py-4 flex items-center justify-center gap-2"
                                 onClick={() => setShowServices(true)}
                             >
@@ -127,7 +127,7 @@ const Hero = () => {
                         </div>
 
                         {/* Social Proof */}
-                        <div 
+                        <div
                             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 pt-8 border-t border-navy/5 cursor-pointer relative group"
                             onClick={() => setShowReviews(!showReviews)}
                         >
@@ -168,14 +168,14 @@ const Hero = () => {
                                     exit={{ opacity: 0 }}
                                     className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
                                 >
-                                    <motion.div 
+                                    <motion.div
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         className="absolute inset-0 bg-navy/60 backdrop-blur-xl"
                                         onClick={() => setShowReviews(false)}
                                     />
-                                    
+
                                     <motion.div
                                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                                         animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -192,7 +192,7 @@ const Hero = () => {
                                                     <p className="text-navy/60 font-medium text-sm">Real experiences from our parents</p>
                                                 </div>
                                             </div>
-                                            <button 
+                                            <button
                                                 onClick={() => setShowReviews(false)}
                                                 className="p-3 bg-white hover:bg-gray-100 rounded-2xl shadow-lg border border-gray-100 transition-all text-navy/40 hover:text-navy"
                                             >
@@ -259,7 +259,7 @@ const Hero = () => {
                                         </div>
 
                                         <div className="p-8 border-t border-gray-100 bg-gray-50/50 flex flex-col md:flex-row justify-center gap-4">
-                                            <Button 
+                                            <Button
                                                 onClick={() => window.open('https://www.justdial.com/Tuni/Shankar-Childrens-Hospital-About-Adb-Bank-Tuni-Main-Road/9999P8854-8854-211129175752-K2V7_BZDET', '_blank')}
                                                 className="px-8 py-4 bg-[#0076D7] hover:bg-[#005fa3] text-white border-none shadow-lg"
                                             >
@@ -284,14 +284,14 @@ const Hero = () => {
                                     exit={{ opacity: 0 }}
                                     className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
                                 >
-                                    <motion.div 
+                                    <motion.div
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         className="absolute inset-0 bg-navy/60 backdrop-blur-xl"
                                         onClick={() => setShowServices(false)}
                                     />
-                                    
+
                                     <motion.div
                                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                                         animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -303,7 +303,7 @@ const Hero = () => {
                                                 <h2 className="text-3xl md:text-4xl font-black text-navy">Our Main Services</h2>
                                                 <p className="text-navy/60 font-medium mt-2">Comprehensive health care for your little ones</p>
                                             </div>
-                                            <button 
+                                            <button
                                                 onClick={() => setShowServices(false)}
                                                 className="p-3 bg-white hover:bg-gray-100 rounded-2xl shadow-lg border border-gray-100 transition-all text-navy/40 hover:text-navy"
                                             >
