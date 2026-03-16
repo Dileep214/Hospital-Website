@@ -7,7 +7,6 @@ import Wellness from './sections/Wellness';
 import Doctors from './sections/Doctors';
 import FAQ from './sections/FAQ';
 import Emergency from './sections/Emergency';
-import Trust from './sections/Trust';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 import Contact from './sections/Contact';
@@ -28,7 +27,7 @@ function App() {
         <Doctors />
         <Emergency />
         <FAQ />
-        <Trust />
+
         <Contact />
       </main>
 
