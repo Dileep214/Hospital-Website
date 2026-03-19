@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Star, ShieldCheck, Activity } from 'lucide-react';
 import Button from '../components/Button';
-import heroImg from '../assets/hero-main.png';
+const heroImg = '/doctor.jpeg';
 
 const Hero = () => {
     const [showReviews, setShowReviews] = useState(false);
@@ -364,7 +364,7 @@ const Hero = () => {
                             <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white/50 backdrop-blur-sm group">
                                 <img
                                     src={heroImg}
-                                    alt="Modern Pediatric Clinic"
+                                    alt="Expert Pediatrician with Child"
                                     className="w-full h-auto object-cover transform transition-transform duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

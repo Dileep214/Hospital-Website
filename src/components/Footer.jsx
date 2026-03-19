@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heart, Instagram, Twitter, Facebook, Mail, Phone, MapPin } from 'lucide-react';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.svg';
 
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="lg:col-span-1">
                         <div className="flex items-center gap-3 mb-8">
                             <div className="w-12 h-12 rounded-xl overflow-hidden bg-white p-1">
-                                <img src={logo} alt="Logo" className="w-full h-full object-contain" />
+                                <img src="/logo.jpeg" alt="Logo" width={48} height={48} className="w-full h-full object-contain" />
                             </div>
                             <span className="text-white font-poppins font-bold text-xl tracking-tight">Shankar Children's Hospital</span>
                         </div>
@@ -20,7 +20,7 @@ const Footer = () => {
                             Providing compassionate, professional, and world-class pediatric and neonatal care for the children of Tuni and beyond.
                         </p>
                         <div className="flex gap-4">
-                            <a 
+                            <a
                                 href="https://www.instagram.com/shankar_childrens_hospital?igsh=eXFybjl3aGZ1anFk"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -28,7 +28,7 @@ const Footer = () => {
                             >
                                 <Instagram size={18} />
                             </a>
-                            <a 
+                            <a
                                 href="https://www.facebook.com/share/1NCuv8mmfV/?mibextid=wwXIfr"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -86,7 +86,7 @@ const Footer = () => {
                 {/* Bottom */}
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-white/40 text-sm flex items-center gap-1">
-                        © 2024 KindredCare Pediatrics. Made with <Heart size={14} className="text-accent" /> for families everywhere.
+                        © 2026 Shankar Children's Hospital. Made with <Heart size={14} className="text-accent" /> for families everywhere.
                     </p>
                     <div className="flex gap-8 text-white/40 text-sm">
                         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

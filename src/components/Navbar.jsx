@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.svg';
 
 
 const Navbar = () => {
@@ -20,6 +20,7 @@ const Navbar = () => {
         { name: 'About', href: '#about' },
         { name: 'Services', href: '#services' },
         { name: 'Doctors', href: '#doctors' },
+        { name: 'Health Blog', href: '/blog' },
         { name: 'FAQ', href: '#faq' },
         { name: 'Contact', href: '#contact' },
     ];
@@ -30,9 +31,9 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100 p-1">
-                        <img src={logo} alt="Logo" className="w-full h-full object-contain" />
+                        <img src="/logo.jpeg" alt="Logo" width={48} height={48} className="w-full h-full object-contain" />
                     </div>
-                    <span className="text-navy font-poppins font-bold text-xl tracking-tight">Shankar Children's <span className="text-primary">Hospital</span></span>
+                    <span className={`${scrolled ? 'text-navy' : 'text-white'} font-poppins font-bold text-xl tracking-tight transition-colors`}>Shankar Children's <span className="text-primary">Hospital</span></span>
                 </div>
 
                 {/* Desktop Links */}
@@ -41,7 +42,7 @@ const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-navy/70 hover:text-primary font-medium transition-colors"
+                            className={`${scrolled ? 'text-navy/70' : 'text-white/90'} hover:text-primary font-medium transition-colors`}
                         >
                             {link.name}
                         </a>
@@ -59,7 +60,7 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-navy"
+                    className={`md:hidden ${scrolled ? 'text-navy' : 'text-white'} transition-colors`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -86,8 +87,8 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
-                            <a 
-                                href="#emergency" 
+                            <a
+                                href="#emergency"
                                 onClick={() => setIsOpen(false)}
                                 className="bg-accent text-white py-3 rounded-xl font-bold mt-2"
                             >

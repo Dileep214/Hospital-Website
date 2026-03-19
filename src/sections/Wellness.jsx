@@ -12,7 +12,7 @@ const Wellness = () => {
                         <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl animate-pulse" />
                         <div className="relative rounded-[50px] overflow-hidden shadow-2xl skew-y-1">
                             <img
-                                src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2031&auto=format&fit=crop"
+                                src="/vaccine.jpeg"
                                 alt="Calm child and therapist"
                                 className="w-full aspect-[4/5] object-cover"
                             />

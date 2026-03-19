@@ -3,22 +3,18 @@ import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import { Instagram, Play, Heart, MessageCircle, Share2 } from 'lucide-react';
 
-const ReelCard = ({ reel, index, onPlayStateChange }) => {
-    const [isPlaying, setIsPlaying] = React.useState(false);
+const ReelCard = ({ reel, index, isPlaying, onToggle }) => {
     const videoRef = React.useRef(null);
 
-    const togglePlay = () => {
+    React.useEffect(() => {
         if (videoRef.current) {
-            const nextState = !isPlaying;
             if (isPlaying) {
-                videoRef.current.pause();
+                videoRef.current.play().catch(err => console.error("Playback failed", err));
             } else {
-                videoRef.current.play();
+                videoRef.current.pause();
             }
-            setIsPlaying(nextState);
-            if (onPlayStateChange) onPlayStateChange(nextState);
         }
-    };
+    }, [isPlaying]);
 
     return (
         <motion.div
@@ -26,7 +22,7 @@ const ReelCard = ({ reel, index, onPlayStateChange }) => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            onClick={togglePlay}
+            onClick={() => onToggle(reel.id)}
             className="group relative aspect-[9/16] w-[280px] sm:w-[320px] rounded-[2rem] overflow-hidden bg-navy shadow-xl cursor-pointer"
         >
             {/* video source */}
@@ -36,6 +32,7 @@ const ReelCard = ({ reel, index, onPlayStateChange }) => {
                 className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${isPlaying ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'}`}
                 loop
                 playsInline
+                preload="none"
             />
 
             {/* Overlays */}
@@ -79,26 +76,26 @@ const ReelCard = ({ reel, index, onPlayStateChange }) => {
 };
 
 const InstagramShowcase = () => {
-    const [activeVideos, setActiveVideos] = React.useState(0);
+    const [playingId, setPlayingId] = React.useState(null);
 
-    const handlePlayStateChange = (isPlaying) => {
-        setActiveVideos(prev => isPlaying ? prev + 1 : Math.max(0, prev - 1));
+    const handleTogglePlay = (id) => {
+        setPlayingId(prevId => prevId === id ? null : id);
     };
 
     const reels = [
         {
             id: 1,
-            video: "WhatsApp Video 2026-03-16 at 7.22.53 PM.mp4",
+            video: "/WhatsApp Video 2026-03-16 at 7.22.53 PM.mp4",
             title: "Our Pediatric Excellence"
         },
         {
             id: 2,
-            video: "WhatsApp Video 2026-03-16 at 7.25.02 PM.mp4",
+            video: "/WhatsApp Video 2026-03-16 at 7.25.02 PM.mp4",
             title: "Expert Newborn Care"
         },
         {
             id: 3,
-            video: "WhatsApp Video 2026-03-16 at 7.26.21 PM.mp4",
+            video: "/WhatsApp Video 2026-03-16 at 7.26.21 PM.mp4",
             title: "Patient Success Stories"
         }
     ];
@@ -126,7 +123,8 @@ const InstagramShowcase = () => {
                         key={reel.id} 
                         reel={reel} 
                         index={index} 
-                        onPlayStateChange={handlePlayStateChange}
+                        isPlaying={playingId === reel.id}
+                        onToggle={handleTogglePlay}
                     />
                 ))}
             </div>

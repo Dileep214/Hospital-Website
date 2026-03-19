@@ -1,19 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import hospitalBg from '../assets/hospital-bg.png';
-
 const TopHero = () => {
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-            {/* Background Image with Overlay */}
+        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-navy">
+            {/* Main Hero Background Image */}
             <div className="absolute inset-0 z-0">
-                <img 
-                    src={hospitalBg} 
-                    alt="Shankar Children's Hospital" 
-                    className="w-full h-full object-cover"
+                <motion.img 
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 0.4 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    src="/vaccine.jpeg" 
+                    alt="Vaccination Services at Shankar Children's Hospital" 
+                    className="w-full h-full object-cover" 
                 />
-                <div className="absolute inset-0 bg-navy/40 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy/30 to-navy/80"></div>
+                <div className="absolute inset-0 backdrop-blur-[2px]"></div>
             </div>
 
             {/* Content */}
